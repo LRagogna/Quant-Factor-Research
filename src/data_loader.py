@@ -1,9 +1,10 @@
 import yfinance as yf
 from pathlib import Path
 
-#create path to store ticker info in data folder
+#create path to store ticker data in data folder
 project_root = Path(__file__).parent.parent
 data_folder = project_root / "data"
+raw_folder = project_root / "data" / "raw"
 
 #stocks for factor analysis
 tickers = ["AAPL",
@@ -19,4 +20,4 @@ for symbol in tickers:
     data = ticker.history(
         start = "2015-01-01",
         end = "2026-01-01")
-    data.to_csv(data_folder / f"{symbol}.csv")
+    data.to_csv(raw_folder / f"{symbol}.csv")
